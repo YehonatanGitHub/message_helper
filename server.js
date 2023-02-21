@@ -4,6 +4,7 @@ const cors = require('cors');
 const connectDB = require('./config/db');
 require('dotenv').config();
 const messageRoutes = require('./routes/messages');
+const userRoutes = require('./routes/users');
 
 connectDB();
 
@@ -15,7 +16,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // use message routes
-app.use('/messages', messageRoutes);
+app.use('/api/messages', messageRoutes);
+app.use('/api/users', userRoutes);
 
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
